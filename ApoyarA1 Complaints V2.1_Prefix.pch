@@ -1,0 +1,10 @@
+//
+// Prefix header for all source files of the 'Hello_SOAP' target in the 'Hello_SOAP' project
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "Hello_SOAPAppDelegate.h"
+Hello_SOAPAppDelegate *glbAppdel;
+#endif
