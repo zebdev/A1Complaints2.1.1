@@ -385,25 +385,6 @@
                                     <outlet property="delegate" destination="GFc-lc-E40" id="duc-7G-5gV"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DhF-Ye-exo">
-                                <rect key="frame" x="227" y="18" width="81" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
-                                </accessibility>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="listLogout.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onSettings:" destination="GFc-lc-E40" eventType="touchUpInside" id="Kot-Bf-uV5"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" id="b88-ca-o95">
                                 <rect key="frame" x="0.0" y="55" width="320" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -444,7 +425,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4xt-vn-5zm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4xt-vn-5zm">
                                 <rect key="frame" x="0.0" y="429" width="106" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -514,8 +495,7 @@
                         <outlet property="btnNew" destination="4xt-vn-5zm" id="6Y9-OL-foT"/>
                         <outlet property="btnOngoing" destination="pxP-4h-xQw" id="tdb-Hv-NSN"/>
                         <outlet property="btnRefresh" destination="EB9-WF-wF4" id="Fi0-T2-pw4"/>
-                        <outlet property="btnSetting" destination="DhF-Ye-exo" id="JD9-ET-I6n"/>
-                        <outlet property="imgView" destination="4Dc-2S-Mp4" id="pEw-hs-OSE"/>
+                        <outlet property="imgView" destination="4Dc-2S-Mp4" id="uh1-UC-MsK"/>
                         <outlet property="table" destination="q3Y-RB-azS" id="vTI-Vb-X6k"/>
                         <outlet property="view" destination="BQs-bi-FV4" id="EjO-Y4-J6I"/>
                         <segue destination="hFH-jb-tCd" kind="modal" identifier="show_conern" id="VG9-ye-3K8"/>
@@ -542,7 +522,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="concernTitle.png" id="P9h-FO-BQk">
@@ -604,23 +584,6 @@
                                             <action selector="bClickedCall:" destination="hFH-jb-tCd" eventType="touchUpInside" id="3q7-A7-7cm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" id="G3n-Iy-5qa">
-                                        <rect key="frame" x="80" y="511" width="80" height="57"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" image="concernMessageUp.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="selected" image="concernMessageDown.png"/>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="bClickedMessage:" destination="hFH-jb-tCd" eventType="touchUpInside" id="gBt-Zd-iWy"/>
-                                            <segue destination="4V1-aH-IWU" kind="modal" identifier="show_message" id="9Ve-zm-Bat"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" id="OzF-fa-Dnh">
                                         <rect key="frame" x="160" y="511" width="80" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -666,6 +629,23 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </webView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" id="G3n-Iy-5qa">
+                                        <rect key="frame" x="80" y="511" width="80" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" image="concernMessageUp.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="concernMessageDown.png"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bClickedMessage:" destination="hFH-jb-tCd" eventType="touchUpInside" id="gBt-Zd-iWy"/>
+                                            <segue destination="4V1-aH-IWU" kind="modal" identifier="show_message" id="9Ve-zm-Bat"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -867,7 +847,7 @@
                                         <rect key="frame" x="8" y="9" width="56" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HEg-Rp-G7G">
@@ -880,7 +860,7 @@
                                         <rect key="frame" x="8" y="60" width="56" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="san-oL-hcP">
@@ -893,7 +873,7 @@
                                         <rect key="frame" x="10" y="119" width="88" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vTg-Vk-6JC">
@@ -969,7 +949,7 @@
                                         <rect key="frame" x="17" y="90" width="286" height="421"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="TFC-EU-znw" id="pa2-Yi-q47"/>
@@ -1175,7 +1155,7 @@
                                         <rect key="frame" x="17" y="90" width="286" height="421"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outlet property="delegate" destination="4V1-aH-IWU" id="uoa-Kn-u5P"/>
@@ -1255,7 +1235,6 @@
         <image name="homeLogin.png" width="581" height="78"/>
         <image name="listClosedDown.png" width="212" height="101"/>
         <image name="listClosedUp.png" width="212" height="101"/>
-        <image name="listLogout.png" width="162" height="60"/>
         <image name="listMenu.png" width="640" height="110"/>
         <image name="listNewDown.png" width="213" height="101"/>
         <image name="listNewUp.png" width="213" height="101"/>
@@ -1274,8 +1253,8 @@
         <image name="responseTitle.png" width="640" height="110"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Ns2-nU-ifo"/>
         <segue reference="rWD-uU-aEB"/>
-        <segue reference="8bq-Yj-lVG"/>
         <segue reference="kam-U3-18K"/>
         <segue reference="9Ve-zm-Bat"/>
     </inferredMetricsTieBreakers>

@@ -271,6 +271,65 @@
 		NSLog(@"theConnection is NULL");
 	}
 }
+-(void)callbackTicket:(NSString *)expID TicketID:(NSString *)ticID Description:(NSString*)desc{
+    /*
+     POST /expertdata.asmx HTTP/1.1
+     Host: ws.apoyar.eu
+     Content-Type: text/xml; charset=utf-8
+     Content-Length: length
+     SOAPAction: "http://tempuri.org/CallTicket"
+     
+     "
+     
+     */
+    [allData removeAllObjects];
+    [parsed removeAllObjects];
+    Hello_SOAPAppDelegate *del = [UIApplication sharedApplication].delegate;
+    NSString *soapMessage = [NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                             "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                             "<soap:Header>\n"
+                             "<WebsiteAuthHeader xmlns=\"http://www.apoyar.net/\">\n"
+                             "<UserName>ap0yar</UserName>\n"
+                             "<Password>ap0yar</Password>\n"
+                             "<IsLoggedIn>false</IsLoggedIn>\n"
+                             "<Url>\"%@\"</Url>\n"
+                             "<LanguageCulture>\"en-gb\"</LanguageCulture>\n"
+                             "</WebsiteAuthHeader>\n"
+                             "</soap:Header>\n"
+                             "<soap:Body>\n"
+                             "<CallBackTicket xmlns=\"http://www.apoyar.net/\">\n"
+                             "<ExpertId>%@</ExpertId>\n"
+                             "<ticketid>%@</ticketid>\n"
+                             "<description>%@</description>\n"
+                             "<url>%@</url>\n"
+                             "</CallBackTicket>\n"
+                             "</soap:Body>\n"
+                             "</soap:Envelope>\n",del.userUrl, expID, ticID, desc, del.userUrl];
+    //    NSLog(@"%@",soapMessage);
+    NSURL *url = [NSURL URLWithString:@"http://ws.apoyar.net/expertdata.asmx"];
+	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+	NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
+	
+	[theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+	[theRequest addValue: @"http://www.apoyar.net/CallBackTicket" forHTTPHeaderField:@"SOAPAction"];
+    [theRequest addValue: @"ws.apoyar.net" forHTTPHeaderField:@"HOST"];
+	[theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+	[theRequest setHTTPMethod:@"POST"];
+	[theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+	
+	if( theConnection )
+	{
+		webData = [[NSMutableData data] retain];
+	}
+	else
+	{
+		NSLog(@"theConnection is NULL");
+	}
+}
+//pavan fixed
+
 -(void)callTicket:(NSString *)expID TicketID:(NSString *)ticID Description:(NSString*)desc{
     /*
      POST /expertdata.asmx HTTP/1.1
@@ -307,27 +366,29 @@
                              "</soap:Envelope>\n",del.userUrl, expID, ticID, desc, del.userUrl];
     //    NSLog(@"%@",soapMessage);
     NSURL *url = [NSURL URLWithString:@"http://ws.apoyar.net/expertdata.asmx"];
-	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-	NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
-	
-	[theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-	[theRequest addValue: @"http://www.apoyar.net/CallTicket" forHTTPHeaderField:@"SOAPAction"];
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+    NSString *msgLength = [NSString stringWithFormat:@"%lu", (unsigned long)[soapMessage length]];
+    
+    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [theRequest addValue: @"http://www.apoyar.net/CallTicket" forHTTPHeaderField:@"SOAPAction"];
     [theRequest addValue: @"ws.apoyar.net" forHTTPHeaderField:@"HOST"];
-	[theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-	[theRequest setHTTPMethod:@"POST"];
-	[theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-	
-	NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-	
-	if( theConnection )
-	{
-		webData = [[NSMutableData data] retain];
-	}
-	else
-	{
-		NSLog(@"theConnection is NULL");
-	}
+    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLConnection *theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    
+    if( theConnection )
+    {
+        webData = [[NSMutableData data] retain];
+    }
+    else
+    {
+        NSLog(@"theConnection is NULL");
+    }
 }
+
+///////
 -(void)messageTicket:(NSString *)expID TicketID:(NSString *)ticID Description:(NSString*)desc{
     /*
      POST /expertdata.asmx HTTP/1.1

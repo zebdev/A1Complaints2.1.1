@@ -11,6 +11,9 @@
 #import "Hello_SOAPViewController.h"
 
 @interface selectActionViewController ()
+{
+    MBProgressHUD *_theHud;
+}
 
 @end
 
@@ -22,7 +25,7 @@
    
 }
 -(IBAction)clickedCall:(id)sender{
-     
+    [self showHud:@"Loading.."];
 	NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     formatter.dateFormat = @"dd/MM/yyyy HH:mm:ss";
 	NSString *timestamp = [formatter stringFromDate:datePicker.date];
@@ -31,6 +34,7 @@
     parser = [[MyParserViewController alloc]init:self];
     [parser callTicket:del.expertID TicketID:del.ticID Description:timestamp];
     [self.view setUserInteractionEnabled:NO];
+    [self hideHud];
     
 }
 -(void)doneAction{
@@ -128,6 +132,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)showHud: (NSString *)waitDesc
+{
+    if (_theHud == nil) {
+        _theHud = [[MBProgressHUD alloc] init];
+    }
+    
+    _theHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _theHud.labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+    _theHud.labelText = waitDesc;
+}
+
+-(void)hideHud
+{
+    [_theHud hide:YES];
+}
+
+
 
 - (void)dealloc {
     [btnRelease release];

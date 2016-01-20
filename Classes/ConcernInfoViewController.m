@@ -11,6 +11,7 @@
 #import "Hello_SOAPAppDelegate.h"
 #import "TicketDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIView+Toast.h"
 
 @interface ConcernInfoViewController ()
 {
@@ -34,6 +35,27 @@
          
     NSString *tP = [NSString stringWithFormat:@"%@",[parsed objectForKey:@"phonenumber"] ];
     NSLog(@"%s tp:%@",__FUNCTION__,tP);
+         
+         if ([tP isEqualToString:@""]) {
+              [self.view makeToast:@"No phone number Found."];
+             return;
+         
+//                     UIAlertController * alert=   [UIAlertController
+//                                           alertControllerWithTitle:@"ApoyarA1"
+//                                           message:@"No phone number Found."
+//                                           preferredStyle:UIAlertControllerStyleAlert];
+//             
+//             
+//             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+//                 
+//                 //do something when click button
+//             }];
+//             [alert addAction:okAction];
+//         
+//             return;
+             
+         }
+         
     //tP = [NSString stringWithFormat:@"%@",[tP stringByReplacingOccurrencesOfString:@"+" withString:@""]];
          
     NSString *phoneNumber = [NSString stringWithFormat:@"telprompt://%@",tP];
@@ -45,8 +67,7 @@
              NSURL *url= [NSURL URLWithString:aPhoneNo];
              [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"isCalled"];
              [[UIApplication sharedApplication] openURL: url];
-//             [self performSelector:@selector(call:) withObject:url afterDelay:0.3];
-//             [self goCallBack:nil];
+
          }
      }
      else{
@@ -54,12 +75,10 @@
          [alert show];
      }
     
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[phoneNumber stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-//    [self performSelector:@selector(goCallBack:) withObject:nil afterDelay:0.6];
-//    [self goCallBack:nil];
+
 }
 -(IBAction)bClickedClose:(id)sender{
-      [self showHud:@"Wait"];
+      [self showHud:@"Loading"];
     if(flag==TRUE) return;
 
     if(!rVC){
@@ -81,7 +100,7 @@
 - (IBAction)btnClosedClicked:(id)sender {
 }
 -(IBAction)bClickedMessage:(id)sender{
-    [self showHud:@"Wait"];
+    [self showHud:@"Loading"];
     if(flag==TRUE) return;
 //    [self goCallBack:nil];
     if(!mVC){
@@ -97,20 +116,20 @@
     message = string;
 }
 -(IBAction)bClickedReject:(id)sender{
-      [self showHud:@"Wait"];
+      [self showHud:@"Loading"];
     if(flag==TRUE) return;
     if(!rVC){
         rVC = [[rejectViewController alloc]init];
     }
     rVC.desc = @"back2";
-rVC.lbltext = @"Release";
+    rVC.lbltext = @"Release";
         [self performSegueWithIdentifier:@"show_reject" sender:self];
     
 //    rVC.lastString = @"Release";
 }
 -(IBAction)btnBack:(id)sender
 {
-   [self showHud:@"wait..."];
+   [self showHud:@"Loading..."];
     if(flag==TRUE) return;
     desc = @"btnBack";
     flag = TRUE;
@@ -120,7 +139,7 @@ rVC.lbltext = @"Release";
 }
 -(IBAction)btnClickedAction:(id)sender{
     [self hideHud];
-   [ self showHud:@"wait..."];
+   [ self showHud:@"Loading..."];
     NSLog(@"%s",__FUNCTION__);
     if(flag==TRUE) return;
     desc = @"btnAction";
@@ -172,6 +191,20 @@ rVC.lbltext = @"Release";
             }
             else if([call isEqualToString:CTCallStateConnected]){
                 NSLog(@"Call has just been connected");
+                
+                NSDate *today = [NSDate date];
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                // display in 12HR/24HR (i.e. 11:25PM or 23:25) format according to User Settings
+                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                NSString *currentTime = [dateFormatter stringFromDate:today];
+                
+                Hello_SOAPAppDelegate *del = [UIApplication sharedApplication].delegate;
+                parser10 = [[MyParserViewController alloc]init:self];
+               
+                [parser10 callbackTicket:del.expertID TicketID:del.ticID Description:currentTime];
+
+
+               
                 if(a==1)
                     a=2;
             }

@@ -23,7 +23,7 @@ MFMessageComposeViewControllerDelegate, UIGridViewDelegate, UITextViewDelegate, 
     NSString *expID;
     NSString *ticID;
     NSString *desc;
-    NSString *emAddress;
+    NSString *emAddress;//llrap027162422015
     NSMutableArray *dat1;
     NSMutableArray *dat2;
     Screen4GridViewController *scr4;

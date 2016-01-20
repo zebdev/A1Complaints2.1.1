@@ -10,8 +10,12 @@
 #import "Hello_SOAPAppDelegate.h"
 #import "Hello_SOAPViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "MBProgressHUD.h"
+#import "UIView+Toast.h"
 @interface rejectViewController ()
+{
+    MBProgressHUD *_theHud;
+}
 
 @end
 
@@ -32,6 +36,14 @@
        [glbAppdel.parentvc dismissViewControllerAnimated:YES completion:nil];
 }
 -(IBAction)btnSendClicked:(id)sender{
+    
+    if ([txtvCont.text isEqualToString:@"" ]) {
+        [self.view makeToast:@"Please enter message"];
+        return;
+    }
+    else
+    {
+
     if (flag == TRUE) return;
     flag = true;
     Hello_SOAPAppDelegate *del = [UIApplication sharedApplication].delegate;
@@ -40,6 +52,7 @@
     }else if([lblDesc.text isEqualToString:@"Release"]){
         [parser rejectTicket:del.expertID TicketID:del.ticID Description:txtvCont.text];
     }
+}
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -217,4 +230,21 @@
     [lblTitle release];
     [super dealloc];
 }
+
+-(void)showHud: (NSString *)waitDesc
+{
+    if (_theHud == nil) {
+        _theHud = [[MBProgressHUD alloc] init];
+    }
+    
+    _theHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _theHud.labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+    _theHud.labelText = waitDesc;
+}
+
+-(void)hideHud
+{
+    [_theHud hide:YES];
+}
+
 @end

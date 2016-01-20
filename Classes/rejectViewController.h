@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MyParserViewController.h"
 
+
 @interface rejectViewController : UIViewController<UITextViewDelegate>{
 
     IBOutlet    UITextView  *txtvCont;

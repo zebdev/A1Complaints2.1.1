@@ -132,6 +132,7 @@
 		C3D475491776F9DB009A45E4 /* FileIO.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D475481776F9DB009A45E4 /* FileIO.m */; };
 		C3F4D8FF17712DF70066743A /* pinInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F4D8FD17712DF70066743A /* pinInputViewController.m */; };
 		F1519DD31C4CEB6B00BC3CD2 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1519DD21C4CEB6B00BC3CD2 /* LocalAuthentication.framework */; };
+		F1FD1E301C4E795900C0BDE9 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FD1E2F1C4E795900C0BDE9 /* UIView+Toast.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -305,6 +306,8 @@
 		C3F4D8FC17712DF70066743A /* pinInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinInputViewController.h; sourceTree = "<group>"; };
 		C3F4D8FD17712DF70066743A /* pinInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pinInputViewController.m; sourceTree = "<group>"; };
 		F1519DD21C4CEB6B00BC3CD2 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		F1FD1E2E1C4E795900C0BDE9 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		F1FD1E2F1C4E795900C0BDE9 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +454,8 @@
 		6BEBB494190ADA42005E51F0 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				F1FD1E2E1C4E795900C0BDE9 /* UIView+Toast.h */,
+				F1FD1E2F1C4E795900C0BDE9 /* UIView+Toast.m */,
 				6B8B9B90196AAAE600DBF7F5 /* MNMBottomPullToRefresh */,
 				6BEBB495190ADA42005E51F0 /* MBProgressHud */,
 			);
@@ -846,6 +851,7 @@
 				C3D475461776127F009A45E4 /* MyParserViewController.m in Sources */,
 				C3D475491776F9DB009A45E4 /* FileIO.m in Sources */,
 				C38435F117809911006BFEED /* OCCalendarView.m in Sources */,
+				F1FD1E301C4E795900C0BDE9 /* UIView+Toast.m in Sources */,
 				C38435F217809911006BFEED /* OCCalendarViewController.m in Sources */,
 				C38435F317809911006BFEED /* OCDaysView.m in Sources */,
 				C38435F417809911006BFEED /* OCSelectionView.m in Sources */,

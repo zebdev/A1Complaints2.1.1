@@ -9,8 +9,13 @@
 #import "messageViewController.h"
 #import "Hello_SOAPAppDelegate.h"
 #import "Hello_SOAPViewController.h"
+#import "UIView+Toast.h"
+#import "MBProgressHUD.h"
 
 @interface messageViewController ()
+{
+    MBProgressHUD *_theHud;
+}
 
 @end
 
@@ -48,11 +53,20 @@
     //        lblPlaceholder.hidden = YES;
 }*/
 -(IBAction)btnSendClicked:(id)sender{
+    if ([txtvCont.text isEqualToString:@"" ]) {
+        [self.view makeToast:@"Please enter message"];
+        return;
+    }
+    else
+    {
+        [self showHud:@"Loading.."];
     if(flag == TRUE) return;
     isSubmitted = YES;
     Hello_SOAPAppDelegate *del = [UIApplication sharedApplication].delegate;
     flag = TRUE;
     [parser messageTicket:del.expertID TicketID:del.ticID Description:txtvCont.text];
+        [self hideHud];
+}
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -225,4 +239,21 @@
     [lblTitle release];
     [super dealloc];
 }
+
+-(void)showHud: (NSString *)waitDesc
+{
+    if (_theHud == nil) {
+        _theHud = [[MBProgressHUD alloc] init];
+    }
+    
+    _theHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _theHud.labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.0];
+    _theHud.labelText = waitDesc;
+}
+
+-(void)hideHud
+{
+    [_theHud hide:YES];
+}
+
 @end

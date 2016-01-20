@@ -506,7 +506,7 @@ if([vw isKindOfClass:[UITextField class]])
         [char8 resignFirstResponder];
  
     }
-//    [self removeFromParentViewController];
+
 }
 - (void)showAlertWithTitle:(NSString *)t
 {
@@ -520,6 +520,8 @@ if([vw isKindOfClass:[UITextField class]])
 //pavan fixed touchid
 
 - (void)authenicateButtonTapped {
+    
+    
     LAContext *context = [[LAContext alloc] init];
     
     NSError *error = nil;
@@ -595,7 +597,7 @@ if([vw isKindOfClass:[UITextField class]])
     }
 }
 - (IBAction)authenticateButtonTapped:(id)sender {
-    
+   
     [self authenicateButtonTapped];
     
 }

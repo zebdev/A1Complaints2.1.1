@@ -48,6 +48,8 @@
 -(void)rejectTicket:(NSString *)expID TicketID:(NSString *)ticID Description:(NSString*)desc;
 -(void)messageTicket:(NSString *)expID TicketID:(NSString *)ticID Description:(NSString*)desc;
 -(void)callTicket:(NSString *)expID TicketID:(NSString *)ticID Description:(NSString*)desc;
+-(void)callbackTicket:(NSString *)expID TicketID:(NSString *)ticID Description:(NSString*)desc;
+
 -(void)getFromEmailAddress:(NSString *)expID TicketID:(NSString *)ticID Description:(NSString*)desc;
 -(void)updateEnggPhonenumber:(NSString *)expID TicketID:(NSString *)ticID PhoneNumber:(NSString*)pNum;
 -(void)updateCustomerPhonenumber:(NSString *)expID CustomerID:(NSString *)ticID PhoneNumber:(NSString*)pNum;

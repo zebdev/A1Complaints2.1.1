@@ -50,7 +50,8 @@
             [self.closedArr addObject:[del.data1 objectAtIndex:i]];
             
         }
-        else if( [[[del.data1 objectAtIndex:i] valueForKey:@"TicketStatusName"] caseInsensitiveCompare:@"Waiting"] == NSOrderedSame|| [[[del.data1 objectAtIndex:i] valueForKey:@"TicketStatusName"] caseInsensitiveCompare:@"assigned"] == NSOrderedSame)
+//        else if( [[[del.data1 objectAtIndex:i] valueForKey:@"TicketStatusName"] caseInsensitiveCompare:@"Waiting"] == NSOrderedSame|| [[[del.data1 objectAtIndex:i] valueForKey:@"TicketStatusName"] caseInsensitiveCompare:@"assigned"] == NSOrderedSame)
+        else if( [[[del.data1 objectAtIndex:i] valueForKey:@"ticketverified"]boolValue]==false)
         {
             [self.newitemArr addObject:[del.data1 objectAtIndex:i]];
         }
@@ -69,7 +70,12 @@
     self.TempDict=[self.newitemArr mutableCopy];
     ////////////////
     refFlag = FALSE;
-    
+    //pavanfix
+//    if ([TempArr count]==0) {
+//        [btnNew setSelected:YES];
+//        return;
+//    }
+
     
     parser2 = [[MyParserViewController alloc]init:self];
     
@@ -106,12 +112,12 @@
     [self refreshTable];
     
 }
--(IBAction)onSettings:(id)sender{
-   
-    if(refFlag == TRUE) return;
-    [glbAppdel.parentvc  dismissViewControllerAnimated:YES completion:nil];
- 
-}
+//-(IBAction)onSettings:(id)sender{
+//   
+//    if(refFlag == TRUE) return;
+//    [glbAppdel.parentvc  dismissViewControllerAnimated:YES completion:nil];
+//    
+//}
 -(IBAction)onRefresh:(id)sender
 {
     if(refFlag == TRUE) return;
@@ -218,7 +224,7 @@
         
         ww += wi[i];
         
-        l.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:10.5f];
+        l.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:11.f];
         l.text = [parsed objectForKey:[a objectAtIndex:i]];
         
         [cell.contentView addSubview:l];
@@ -233,6 +239,7 @@
         [cell.contentView setBackgroundColor:[UIColor whiteColor]];
     }
     [self hideHud];
+    
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -288,7 +295,7 @@
     
     PullToRefreshFlag=FALSE;
     
-    
+   
     [super viewDidLoad];
     
     //    NSDictionary *parsed = [del.data1 objectAtIndex:indexPath.row];
@@ -368,6 +375,7 @@
         [self performSegueWithIdentifier:@"show_conern" sender:self];
 
     }
+    
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
         glbAppdel.parentvc=self;
@@ -378,7 +386,7 @@
     }
 }
 -(IBAction)btnNewClicked:(id)sender
-{   [self showHud:@"Wait"];
+{  // [self showHud:@"Loading"];
     [pullToRefreshManager  tableViewReloadFinished];
     
     Hello_SOAPAppDelegate* del = [UIApplication sharedApplication].delegate;
@@ -386,7 +394,7 @@
     
     status_for_ticket=@"-1";
     del.Status_For_Ticket=@"-1";
-    filterString = @"Waiting,UnQualified";
+    filterString = @"Waiting";
     
     self.TempDict=[self.newitemArr mutableCopy];
     self.TempArr=self.newitemArr;
@@ -396,6 +404,12 @@
     [btnClosed setSelected:NO];
     
     NSLog(@"total count=%lu",(unsigned long)[TempArr count]);
+    
+    if ([TempArr count]==0) {
+        //[self hideHud];
+        //[table reloadData];
+        return;
+    }
         [self onRefresh:sender];
     [table reloadData];
 
@@ -413,6 +427,8 @@
 
 - (IBAction)btnOngoingClicked:(id)sender
 {
+    
+    
 //    [pullToRefreshManager  tableViewReloadFinished];
               Hello_SOAPAppDelegate* del = [UIApplication sharedApplication].delegate;
     del.Selected_Category=@"2";
@@ -450,6 +466,8 @@
 
 - (IBAction)btnClosedClicked:(id)sender
 {
+   
+    
 //    [pullToRefreshManager  tableViewReloadFinished];
     
     Hello_SOAPAppDelegate* del = [UIApplication sharedApplication].delegate;
@@ -480,6 +498,8 @@
     {
         [pullToRefreshManager setHidden:NO];
     }*/
+   
+    
 }
 
 - (void)dealloc {
@@ -505,6 +525,9 @@
     }
     
     [self showTables];
+    //[btnNew setSelected:YES];
+//    [btnClosed setSelected:NO];
+//    [btnOngoing setSelected:NO];
 }
 #pragma  mark - Header Button Clicked
 - (IBAction)btnheadingClicked:(id)sender
