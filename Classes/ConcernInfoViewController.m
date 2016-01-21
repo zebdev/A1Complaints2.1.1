@@ -192,16 +192,21 @@
             else if([call isEqualToString:CTCallStateConnected]){
                 NSLog(@"Call has just been connected");
                 
-                NSDate *today = [NSDate date];
-                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                // display in 12HR/24HR (i.e. 11:25PM or 23:25) format according to User Settings
-                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-                NSString *currentTime = [dateFormatter stringFromDate:today];
+//                NSDate *today = [NSDate date];
+//                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//                // display in 12HR/24HR (i.e. 11:25PM or 23:25) format according to User Settings
+//                [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+//                NSString *currentTime = [dateFormatter stringFromDate:today];
+                
+                NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"dd-MM-yyyy hh:mm"];
+                NSLog(@"%@",[dateFormatter stringFromDate:[NSDate date]]);
+
                 
                 Hello_SOAPAppDelegate *del = [UIApplication sharedApplication].delegate;
                 parser10 = [[MyParserViewController alloc]init:self];
                
-                [parser10 callbackTicket:del.expertID TicketID:del.ticID Description:currentTime];
+                [parser10 callTicket:del.expertID TicketID:del.ticID Description:[dateFormatter stringFromDate:[NSDate date]]];
 
 
                
@@ -525,8 +530,13 @@
         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"isCalled"];
     }
   //  NSString *html=[[NSUserDefaults standardUserDefaults] objectForKey:@"TicketDescription"];
+    NSString *body = [[NSUserDefaults standardUserDefaults] objectForKey:@"TicketDescription"];
+    NSString *htmlString =
+    [NSString stringWithFormat:@"<font face='HelveticaNeue-Medium' size='3'>%@", body];
+    [web loadHTMLString:htmlString baseURL:nil];
     
-    [web loadHTMLString: [[NSUserDefaults standardUserDefaults] objectForKey:@"TicketDescription"] baseURL:nil];
+    
+    //[web loadHTMLString:  baseURL:nil];
 //    l.text =[[NSUserDefaults standardUserDefaults] objectForKey:@"TicketDescription"];
     // Do any additional setup after loading the view from its nib.
 }

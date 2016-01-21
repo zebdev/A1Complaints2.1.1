@@ -189,8 +189,14 @@
     return 51;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-   // Hello_SOAPAppDelegate* del = [UIApplication sharedApplication].delegate;
-   // return del.data1.count;
+   
+    if ([self.TempDict count]==0) {
+        hiddenlable.hidden=NO;
+        hiddenlable.text=@"No Concerns to Show";
+        
+        
+    }
+    
     return [self.TempDict count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -262,7 +268,17 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
     [parser2 getTicketInformation:del.ticID];
 }
-
+-(NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section   {
+    
+    NSString *message = @"";
+    NSInteger numberOfRowsInSection = [self tableView:self.table numberOfRowsInSection:section ];
+    
+    if (numberOfRowsInSection == 0) {
+        message = @"No Concerns to Show";
+    }
+    
+    return message;
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -273,6 +289,7 @@
 }
 - (void)viewDidLoad
 {
+    hiddenlable.hidden=YES;
     [self prefersStatusBarHidden];
 //    HUD=[[MBProgressHUD alloc] initWithView:self.navigationController.view];
 //    [self.navigationController.view addSubview:HUD];
@@ -405,11 +422,11 @@
     
     NSLog(@"total count=%lu",(unsigned long)[TempArr count]);
     
-    if ([TempArr count]==0) {
-        //[self hideHud];
-        //[table reloadData];
-        return;
-    }
+//    if ([TempArr count]==0) {
+//        //[self hideHud];
+//        //[table reloadData];
+//        return;
+//    }
         [self onRefresh:sender];
     [table reloadData];
 

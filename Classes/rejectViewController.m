@@ -52,6 +52,14 @@
     }else if([lblDesc.text isEqualToString:@"Release"]){
         [parser rejectTicket:del.expertID TicketID:del.ticID Description:txtvCont.text];
     }
+         if([lblDesc.text isEqualToString:@"Close"])
+         {
+         [self.view makeToast:@"Concern is Closed"];
+         }
+        else
+        {
+          [self.view makeToast:@"Concern is Released"];  
+        }
 }
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

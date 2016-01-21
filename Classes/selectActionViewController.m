@@ -32,7 +32,7 @@
     
     Hello_SOAPAppDelegate *del = [UIApplication sharedApplication].delegate;
     parser = [[MyParserViewController alloc]init:self];
-    [parser callTicket:del.expertID TicketID:del.ticID Description:timestamp];
+    [parser callbackTicket:del.expertID TicketID:del.ticID Description:timestamp];
     [self.view setUserInteractionEnabled:NO];
     [self hideHud];
     

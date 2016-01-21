@@ -65,7 +65,8 @@
     Hello_SOAPAppDelegate *del = [UIApplication sharedApplication].delegate;
     flag = TRUE;
     [parser messageTicket:del.expertID TicketID:del.ticID Description:txtvCont.text];
-        [self hideHud];
+    [self.view makeToast:@"Message sent to head office"];
+    [self hideHud];
 }
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

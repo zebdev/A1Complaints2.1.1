@@ -21,10 +21,13 @@
     IBOutlet UITableView *table;
     IBOutlet UIButton *btnSetting;
     IBOutlet UIButton *btnRefresh;
+    IBOutlet UILabel *hiddenlable;
     
     NSString *status_for_ticket;
     
     IBOutlet UIView *ListheadingView;
+    IBOutlet UIView *ListheadingView1;
+    IBOutlet UIView *ListheadingView2;
     ConcernInfoViewController *concernInfo;
     NSString *storeName;
     NSString *customerName;

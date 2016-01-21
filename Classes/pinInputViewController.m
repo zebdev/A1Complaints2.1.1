@@ -164,6 +164,8 @@ if([vw isKindOfClass:[UITextField class]])
 {
     [super viewDidLoad];
     
+    
+    
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
     flag = TRUE;
     f = FALSE;
@@ -270,38 +272,6 @@ if([vw isKindOfClass:[UITextField class]])
             [self showAlertWithTitle:@"PIN code input error!"];
             f = FALSE;
         }
-//    if(ret > 0){//PIN CODE SAVED
-//        if([strPin isEqualToString:strSavedPin]){//PIN CODE INPUTED CORRECTLY.
-//            NSLog(@"PIN code input OK!");
-//            expertID = [NSString stringWithFormat:@"%d",expID];
-//            Hello_SOAPAppDelegate *del = [UIApplication sharedApplication].delegate;
-//            del.expertID = expertID;
-//            [parser1 getTicketID:expertID];
-//        }else{
-////            NSLog(@"PIN code input error!");
-//            [self showAlertWithTitle:@"PIN code input error!"];
-//            f = FALSE;
-//        }
-//    }else{//save pin code
-//        NSLog(@"PIN code Saving!");
-//        if([strPin length]== 4){
-//            [m_pFileIO openFile:NO];//write mode
-//            [m_pFileIO writeInt:4 :strPin.length];
-//            [m_pFileIO writeInt:8 :expertID.intValue];
-//            [m_pFileIO writeString:12 Data:strPin];
-//            [m_pFileIO closeFile];
-//            
-//
-//            del.expertID = expertID;
-//            
-//            [parser1 getTicketID:expertID];
-//
-//        }else{
-////            NSLog(@"PIN code input must be 4 letters!");
-//            [self showAlertWithTitle:@"PIN code input must be 4 letters!"];
-//            f = FALSE;
-//        }
-//    }
 }
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
 	[textField resignFirstResponder];
@@ -458,13 +428,7 @@ if([vw isKindOfClass:[UITextField class]])
         
         NSLog(@"del data1 value=%@",del.data1);
         
-//        NSMutableArray *marrData = [NSMutableArray arrayWithArray:parser1.allData];
-//        if([marrData valueForKey:@"InsertDeviceToken"] == nil || [[marrData valueForKey:@"InsertDeviceToken"] isEqual:@"0"]){
-//            [self showAlertWithTitle:@"Device Token not Inserted"];
-//        } else  if([marrData valueForKey:@"InsertDeviceToken"]){
-////            [self showAlertWithTitle:@"Device Token Added Successfully"];
-//            NSLog(@"response data %@",marrData);
-//        }
+
         
         do
         {
@@ -564,6 +528,7 @@ if([vw isKindOfClass:[UITextField class]])
                                       //do something when click button
                                   }];
                                   [alert addAction:okAction];
+                                 
                                   [self performSegueWithIdentifier:@"show_list" sender:self];
                                   
                               } else {
